@@ -4,6 +4,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import Form from "./Form";
 import Detail from "./Detail";
+import Today from "./Today";
 
 const Weather = () => {
     const [city, setCity] = useState("");
@@ -44,20 +45,8 @@ const Weather = () => {
           <p>city name: {city}</p>
         </div>
         
+        <Today weatherData={weatherData}></Today>
         <Detail weatherData={weatherData}></Detail>
-        {/* {weatherData ? (
-          <>
-            <h2>{weatherData.name}</h2>
-            <p>Temperature: {weatherData.main.temp}°C</p>
-            <p>Description: {weatherData.weather[0].description}</p>
-            <p>Feels like : {weatherData.main.feels_like}°C</p>
-            <p>Humidity : {weatherData.main.humidity}%</p>
-            <p>Pressure : {weatherData.main.pressure}</p>
-            <p>Wind Speed : {weatherData.wind.speed}m/s</p>
-          </>
-        ) : (
-          <p>Loading weather data...</p>
-        )} */}
       </>
     );
   };

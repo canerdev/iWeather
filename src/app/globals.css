@@ -15,3 +15,16 @@
     /* margin-top: 192px; */
     width: 311px;
 }
+
+.details-list span {
+    color: #BFBFD4;
+}
+
+.container {
+    width: 359px;
+    border: 2px solid white;
+}
+
+.details-container li:not(:last-child) {
+    border-bottom: 1px solid #1C1C27;
+}
