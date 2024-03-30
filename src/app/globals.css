@@ -1,0 +1,17 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+    background-image: url('/assets/Background.png');
+    color: white;
+}
+
+.text-blue {
+    color: #8FB2F5;
+}
+
+.search-container {
+    /* margin-top: 192px; */
+    width: 311px;
+}
