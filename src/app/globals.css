@@ -22,9 +22,18 @@
 
 .container {
     width: 359px;
-    border: 2px solid white;
+    background-color: #16161F;
+    border-radius: 12px;
 }
 
 .details-container li:not(:last-child) {
     border-bottom: 1px solid #1C1C27;
+}
+
+.today-cart {
+    background-image: url('/assets/today_bg.png');
+}
+
+.location-date {
+    margin-bottom: 111px;
 }

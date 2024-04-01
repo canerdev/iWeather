@@ -4,7 +4,7 @@ const Detail = ({weatherData}) => {
     if (weatherData == null) return null;
 
     return (
-        <div className="details-container border-2 border-red-700 container p-4 m-auto">
+        <div className="details-container container px-4 py-2 m-auto">
             <ul className="details-list">
                 <li className="py-4 flex justify-between " id="1">
                     <span>

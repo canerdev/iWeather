@@ -10,11 +10,11 @@ const Today = ({ weatherData }) => {
     const weather = weatherData.weather[0];
 
     return (
-        <div className="container today-cart-container m-auto mb-2">
-            <div className="today-cart">
+        <div className="container today-cart-container m-auto mb-2 p-3">
+            <div className="rounded-lg today-cart p-5">
                 <div className="location-date">
-                    <p>{weatherData.name}, {weatherData.sys.country}</p>
-                    <p>{dayOfWeek}, {month} {dayOfMonth}, {year}</p> 
+                    <p className="text-base">{weatherData.name}, {weatherData.sys.country}</p>
+                    <p className="text-xs">{dayOfWeek}, {month} {dayOfMonth}, {year}</p> 
                 </div>
                 <div className="weather-summary">
                     <p>{weatherData.main.temp}°c</p>
