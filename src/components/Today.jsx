@@ -13,13 +13,13 @@ const Today = ({ weatherData }) => {
         <div className="container today-cart-container m-auto mb-2 p-3">
             <div className="rounded-lg today-cart p-5">
                 <div className="location-date">
-                    <p className="text-base">{weatherData.name}, {weatherData.sys.country}</p>
-                    <p className="text-xs">{dayOfWeek}, {month} {dayOfMonth}, {year}</p> 
+                    <p className="text-base font-bold">{weatherData.name}, {weatherData.sys.country}</p>
+                    <p className="text-xs font-normal">{dayOfWeek}, {month} {dayOfMonth}, {year}</p> 
                 </div>
                 <div className="weather-summary">
-                    <p>{weatherData.main.temp}°c</p>
-                    <p>{weatherData.main.temp_min}°c / {weatherData.main.temp_max}°c</p>
-                    <p>{weather.main}</p>
+                    <p className="text-5xl font-extrabold mb-2">{weatherData.main.temp.toFixed(1)}°c</p>
+                    <p className="font-bold text-base">{weatherData.main.temp_min}°c / {weatherData.main.temp_max}°c</p>
+                    <p className="text-sm font-normal">{weather.main}</p>
                 </div>
             </div>
         </div>

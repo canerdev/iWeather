@@ -17,18 +17,17 @@ const Form = ({ city, setCity, handleSubmit }) => {
           style={{
             backgroundColor: "#1E1E29",
             color: "#FAFAFA",
-            padding: "0.5rem",
             borderRadius: "0.375rem",
             border: "none",
-            width: "311px",
+            width: "359px",
           }}
+          className="px-5 py-4"
           type="text"
           placeholder="Search location"
           value={city}
           onChange={handleInputChange}
           onKeyDown={handleKeyDown}
         />
-        <button type="submit">submit</button>
       </form>
     );
   };
