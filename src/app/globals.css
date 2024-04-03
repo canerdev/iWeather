@@ -56,3 +56,16 @@
 input[type=text]:focus {
     outline: none;
 }
+
+.filtered-cities-list {
+    width: 359px;
+    background-color: #1E1E29;
+}
+
+.filtered-cities-list li:not(:last-child) {
+    border-bottom: 1px solid #13131A;
+}
+
+.filtered-cities-list li:hover {
+    background-color: #1a1a1f;
+}

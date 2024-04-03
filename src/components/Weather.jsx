@@ -7,20 +7,33 @@ import Detail from "./Detail";
 import Today from "./Today";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-
+import SuggestedCities from "./SuggestedCities";
 
 const Weather = () => {
     const [city, setCity] = useState("");
     const [weatherData, setWeatherData] = useState(null);
     const [submitted, setSubmitted] = useState(false);
+    const [cities, setCities] = useState(null);
+
+    const fetchCities = async () => {
+        try {
+            const res = await axios.get('https://countriesnow.space/api/v0.1/countries');
+
+            const citiesData = res.data.data.map((country) => country.cities).flat();
+            setCities(citiesData);
+            console.log("countries api is called");
+        } catch (err) {
+            console.log(err);
+        }
+    }
+
 
     const fetchData = async () => {
         try {
             const res = await axios.get(
                 `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=8ed40447b15d76adef66af3ef5e7ee1d`
             );
-
-            console.log(res);
+            console.log("open weather is called");
             setWeatherData(res.data);
         } catch (err) {
             if (err.response.status === 404) {
@@ -39,11 +52,8 @@ const Weather = () => {
     };
 
     useEffect(() => {
-        fetchData();
+        fetchCities();
     }, []); // Only fetch data on initial render
-
-    // console.log(weatherData);    
-
 
     return (
         <>
@@ -52,7 +62,9 @@ const Weather = () => {
                     Welcome to <span className="text-blue">TypeWeather</span>
                 </p>
                 <p className="text-sm font-normal">Choose a location to see the weather forecast</p>
-                <Form handleSubmit={handleSubmit} city={city} setCity={setCity}></Form>
+                <Form handleSubmit={handleSubmit} cities={cities} city={city} setCity={setCity}></Form>
+
+                <SuggestedCities city={city} cities={cities} setCity={setCity} fetchData={fetchData}> </SuggestedCities>
             </div>
 
             <Today className={`${submitted ? 'container-visible' : ''}`} weatherData={weatherData}></Today>
