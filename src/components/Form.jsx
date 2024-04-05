@@ -1,6 +1,12 @@
+// Form.js
 'use client';
 
-const Form = ({ city, setCity, handleSubmit }) => {
+import React, { useState, useEffect } from "react";
+import axios from "axios";
+
+const Form = ({ city, setCity, fetchData, handleSubmit, cities }) => {
+    const [filteredCities, setFilteredCities] = useState([]);
+
     const handleInputChange = (e) => {
         setCity(e.target.value);
     };
@@ -10,6 +16,18 @@ const Form = ({ city, setCity, handleSubmit }) => {
             handleSubmit(e); // Call handleSubmit on Enter key press
         }
     };
+
+    const handleClick = (clickedCity) => {
+        fetchData(clickedCity);
+        setCity('');
+    }
+
+    useEffect(() => {
+        if (cities != null) {
+            const filtered = cities.filter((c) => c.toLowerCase().startsWith(city.toLowerCase())).slice(0, 3);
+            setFilteredCities(filtered);
+        }
+    }, [city])
 
     return (
         <form onSubmit={handleSubmit}>
@@ -30,6 +48,20 @@ const Form = ({ city, setCity, handleSubmit }) => {
                 aria-autocomplete="list"
                 aria-controls="autocomplete-list"
             />
+            {filteredCities.length > 0 && (
+                <ul id="autocomplete-list" className={`filtered-cities-list rounded mt-2 ${!city ? 'hidden' : ''}`} role="listbox">
+                    {filteredCities.map((it) => (
+                        <li
+                            key={it}
+                            onClick={() => handleClick(it)}
+                            className="py-4 px-5 rounded"
+                            role="option"
+                        >
+                            {it}
+                        </li>
+                    ))}
+                </ul>
+            )}
         </form>
     );
 };

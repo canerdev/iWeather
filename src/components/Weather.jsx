@@ -7,7 +7,6 @@ import Detail from "./Detail";
 import Today from "./Today";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import SuggestedCities from "./SuggestedCities";
 
 const Weather = () => {
     const [city, setCity] = useState("");
@@ -27,17 +26,16 @@ const Weather = () => {
         }
     }
 
-
-    const fetchData = async () => {
+    const fetchData = async (c) => {
         try {
             const res = await axios.get(
-                `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=8ed40447b15d76adef66af3ef5e7ee1d`
+                `https://api.openweathermap.org/data/2.5/weather?q=${c}&units=metric&appid=8ed40447b15d76adef66af3ef5e7ee1d`
             );
             console.log("open weather is called");
             setWeatherData(res.data);
         } catch (err) {
             if (err.response.status === 404) {
-                const msg = city + " is not found!";
+                const msg = c + " is not found!";
                 toast.error(msg, { autoClose: 2000 });
             }
             console.log(err);
@@ -46,9 +44,10 @@ const Weather = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        fetchData();
+        fetchData(city);
         setCity(""); // Clear input field after submission
         setSubmitted(true);
+        console.log("handle submit is called");
     };
 
     useEffect(() => {
@@ -62,9 +61,7 @@ const Weather = () => {
                     Welcome to <span className="text-blue">TypeWeather</span>
                 </p>
                 <p className="text-sm font-normal">Choose a location to see the weather forecast</p>
-                <Form handleSubmit={handleSubmit} cities={cities} city={city} setCity={setCity}></Form>
-
-                <SuggestedCities city={city} cities={cities} setCity={setCity} fetchData={fetchData}> </SuggestedCities>
+                <Form handleSubmit={handleSubmit} cities={cities} city={city} setCity={setCity} fetchData={fetchData}></Form>
             </div>
 
             <Today className={`${submitted ? 'container-visible' : ''}`} weatherData={weatherData}></Today>
