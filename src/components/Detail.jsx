@@ -1,5 +1,3 @@
-// 'use client';
-
 const Detail = ({weatherData}) => {
     if (weatherData == null) return null;
 

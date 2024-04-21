@@ -14,17 +14,17 @@ const Today = ({ weatherData }) => {
 
     // icons
     const todayIcons = {
-        '01d': '/assets/clear-day-bg.svg',
-        '02d': '/assets/clear-night-bg.svg',
-        '01n': '/assets/cloudy-day-bg.svg',
-        '02n': '/assets/cloudy-night-bg.svg',
-        '03d': '/assets/few-clouds-day-bg.svg',
-        '03n': '/assets/few-clouds-night-bg.svg',
-        '04d': '/assets/rain-day-bg.svg',
-        '04n': '/assets/rain-night-bg.svg',
-        '05d': '/assets/storm-day-bg.svg',
-        '05n': '/assets/storm-nigth-bg.svg',
-        '10d': '/assets/rain-night-bg.svg',
+        '01d': '/assets/clear-day-bg.png',
+        '02d': '/assets/clear-night-bg.png',
+        '01n': '/assets/cloudy-day-bg.png',
+        '02n': '/assets/cloudy-night-bg.png',
+        '03d': '/assets/few-clouds-day-bg.png',
+        '03n': '/assets/few-clouds-night-bg.png',
+        '04d': '/assets/rain-day-bg.png',
+        '04n': '/assets/rain-night-bg.png',
+        '05d': '/assets/storm-day-bg.png',
+        '05n': '/assets/storm-nigth-bg.png',
+        '10d': '/assets/rain-night-bg.png',
     }
 
     return (
