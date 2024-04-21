@@ -2,9 +2,8 @@
 'use client';
 
 import React, { useState, useEffect } from "react";
-import axios from "axios";
 
-const Form = ({ city, setCity, fetchData, handleSubmit, cities }) => {
+const Form = ({ city, setCity, fetchData, handleSubmit, cities, setSubmitted }) => {
     const [filteredCities, setFilteredCities] = useState([]);
 
     const handleInputChange = (e) => {
@@ -20,6 +19,7 @@ const Form = ({ city, setCity, fetchData, handleSubmit, cities }) => {
     const handleClick = (clickedCity) => {
         fetchData(clickedCity);
         setCity('');
+        setSubmitted(true);
     }
 
     useEffect(() => {

@@ -60,6 +60,8 @@ input[type=text]:focus {
 .filtered-cities-list {
     width: 359px;
     background-color: #1E1E29;
+    z-index: 9999;
+    position: absolute;
 }
 
 .filtered-cities-list li:not(:last-child) {

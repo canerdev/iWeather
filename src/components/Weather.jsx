@@ -13,6 +13,7 @@ const Weather = () => {
     const [weatherData, setWeatherData] = useState(null);
     const [submitted, setSubmitted] = useState(false);
     const [cities, setCities] = useState(null);
+    const [isLoading, setIsLoading] = useState(false);
 
     const fetchCities = async () => {
         try {
@@ -20,19 +21,21 @@ const Weather = () => {
 
             const citiesData = res.data.data.map((country) => country.cities).flat();
             setCities(citiesData);
-            console.log("countries api is called");
         } catch (err) {
             console.log(err);
         }
     }
 
     const fetchData = async (c) => {
+        setIsLoading(true);
         try {
             const res = await axios.get(
-                `https://api.openweathermap.org/data/2.5/weather?q=${c}&units=metric&appid=8ed40447b15d76adef66af3ef5e7ee1d`
+                // `https://api.openweathermap.org/data/2.5/weather?q=${c}&units=metric&appid=8ed40447b15d76adef66af3ef5e7ee1d`
+                `https://api.openweathermap.org/data/2.5/forecast?q=${c}&appid=8ed40447b15d76adef66af3ef5e7ee1d`
             );
-            console.log("open weather is called");
             setWeatherData(res.data);
+            console.log("res data: ", res.data);
+            setIsLoading(false);
         } catch (err) {
             if (err.response.status === 404) {
                 const msg = c + " is not found!";
@@ -47,7 +50,6 @@ const Weather = () => {
         fetchData(city);
         setCity(""); // Clear input field after submission
         setSubmitted(true);
-        console.log("handle submit is called");
     };
 
     useEffect(() => {
@@ -61,7 +63,7 @@ const Weather = () => {
                     Welcome to <span className="text-blue">TypeWeather</span>
                 </p>
                 <p className="text-sm font-normal">Choose a location to see the weather forecast</p>
-                <Form handleSubmit={handleSubmit} cities={cities} city={city} setCity={setCity} fetchData={fetchData}></Form>
+                <Form handleSubmit={handleSubmit} cities={cities} city={city} setCity={setCity} fetchData={fetchData} setSubmitted={setSubmitted}></Form>
             </div>
 
             <Today className={`${submitted ? 'container-visible' : ''}`} weatherData={weatherData}></Today>
