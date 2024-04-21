@@ -38,12 +38,12 @@ const Detail = ({weatherData}) => {
                     </span>
                     {weather.main.humidity}%
                 </li>
-                <li className="py-4 flex justify-between " id="5">
+                {/* <li className="py-4 flex justify-between " id="5">
                     <span>
                         <img className="inline-block mr-3" width={24} height={24} src="/assets/uv.svg" alt="UV Index" />
                         UV index
                     </span>
-                </li>
+                </li> */}
             </ul>
         </div>
     )

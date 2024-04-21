@@ -3,7 +3,7 @@
 
 import React, { useState, useEffect } from "react";
 
-const Form = ({ city, setCity, fetchData, handleSubmit, cities, setSubmitted }) => {
+const Form = ({ city, setCity, fetchData, handleSubmit, cities, setSubmitted, isLoading }) => {
     const [filteredCities, setFilteredCities] = useState([]);
 
     const handleInputChange = (e) => {
@@ -28,7 +28,7 @@ const Form = ({ city, setCity, fetchData, handleSubmit, cities, setSubmitted }) 
             setFilteredCities(filtered);
         }
     }, [city])
-
+    
     return (
         <form onSubmit={handleSubmit}>
             <input
@@ -41,7 +41,7 @@ const Form = ({ city, setCity, fetchData, handleSubmit, cities, setSubmitted }) 
                 }}
                 className="px-5 py-4"
                 type="text"
-                placeholder="Search location"
+                placeholder={isLoading ? "Loading..." : "Search location"}
                 value={city}
                 onChange={handleInputChange}
                 onKeyDown={handleKeyDown}
