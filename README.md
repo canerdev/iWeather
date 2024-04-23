@@ -1,5 +1,5 @@
 # iWeather
-[Available on: ](https://i-weather-canerdevs-projects.vercel.app/)
+You can check it out via [this link](https://i-weather-canerdevs-projects.vercel.app/).
 
 
 ## Description
